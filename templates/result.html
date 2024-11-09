@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="flex-col items-center p-3 justify-center mt-14 lg:mt-8">
+
+    <div>
+        <p class="text-center w-full mt-5">Correct Answers: {{ correct }}</p>
+    </div>
+    <div>
+        <p class="text-center w-full mt-5">Wrong Answers: {{ wrong }}</p>
+    </div>
+    <div>
+        <p class="text-center w-full mt-5">Missed: {{ miss }}</p>
+    </div>
+    <div>
+        <p class="text-center w-full mt-5">Final Score: {{ score }}</p>
+    </div>
+<div class="grid place-content-center mt-7">
+    <a href="/" class="w-fit p-3 bg-teal-500 rounded-md text-white text-center font-semibold cursor-pointer hover:bg-teal-400 hover:scale-105 transition-all">Again?</a>
+</div>
+</div>
+
+
+{% endblock content %}

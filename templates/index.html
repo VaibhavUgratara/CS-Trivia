@@ -1,0 +1,64 @@
+{% extends 'base.html' %} {% block content %}
+
+
+<form action="/result"  method="post">
+  {% csrf_token %}
+  
+
+  {% for i,j in response.items %}
+ {% with id=forloop.counter %}
+
+<div class="flex place-content-center mt-5">
+  <div
+  class="bg-red-200 w-3/4 h-fit min-h-28 flex-col place-content-center rounded-md p-2"
+  >
+  
+  {% for ques,optn in j.items %}
+  <p class="text-center font-normal text-wrap">{{ id }}) {{ ques }}</p>
+  
+  
+</div>
+</div>
+
+<div class="my-7">
+  
+  <div class="flex flex-wrap min-w-56 mx-auto w-10/12 text-sm">
+    {% for x in optn %}
+    <div
+    class="options min-w-[45%] md:max-w-[45%] mx-auto my-2 inline-block"
+    >
+    <input type="radio" name="{{ i }}" id="{{ i }}_{{ forloop.counter }}" class="hidden" value="{{x}}"/>
+    <label for="{{ i }}_{{ forloop.counter }}" class="block p-2 rounded-md text-center border-2 border-black"
+    > 
+    
+    {{x}}
+    
+    </label
+    >
+  </div>
+  {% endfor %}
+  {% endfor %}
+  {% endwith %}
+</div>
+</div>
+{% endfor %}
+<div class="flex items-center">
+  <button type="submit" class="bg-blue-600 p-3 text-white rounded-md mx-auto">Submit</button>
+</div>
+</form>
+
+<style>
+  input[type="radio"] + label {
+    cursor: pointer;
+    user-select: none;
+  }
+  input[type="radio"]:checked + label {
+    background-color: #ffe603;
+  }
+</style>
+
+<script>
+  alert("Welcome to Computer Science Trivia!!\nInstructions:\n1.For every correct answer '+4'.\n2.For every wrong answer '-1'.\n3. No points are deducted if question is not attempted.")
+</script>
+
+{% endblock content %}
